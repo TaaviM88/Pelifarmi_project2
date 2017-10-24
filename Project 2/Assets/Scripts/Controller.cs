@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour
 	public float hoverHeight = 1.5f;
 	public GameObject[] hoverPoints;
 
+
 	public float forwardAcceleration = 8000f;
 	public float reverseAcceleration = 4000f;
 	float thrust = 0f;
@@ -26,8 +27,14 @@ public class Controller : MonoBehaviour
 
 	int layerMask;
 
+	//speedboost
+	public float maxSpeed = 12000f;
+	public float speedBoost = 0.5f;
+	private float regularSpeed = 8000f;
+
 	void Start()
 	{
+
 		//tähän laitettiin referenssi auton rigidbodyyn ja luotiin layermask jota
 		// käytetään myöhemmin Raycastissä. Myös rigidbodyn painopiste yhden yksikön verran
 		// auton alle jolloin auto on vakaampi ja sitä on helpompi hallita ilmassakin
@@ -56,6 +63,18 @@ public class Controller : MonoBehaviour
 		float turnAxis = Input.GetAxis("Horizontal");
 		if (Mathf.Abs(turnAxis) > deadZone)
 			turnValue = turnAxis;
+
+		//speedboost tähän
+		if (Input.GetAxis ("Fire1") > 0 && forwardAcceleration < maxSpeed) 
+		{
+			forwardAcceleration *= speedBoost;
+		}
+		if (Input.GetAxis ("Fire1") == 0) 
+		{
+			forwardAcceleration = regularSpeed;
+		}
+
+
 	}
 
 	void FixedUpdate()
