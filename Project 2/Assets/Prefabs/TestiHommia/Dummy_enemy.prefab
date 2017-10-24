@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 65588334961534240}
   - component: {fileID: 23750872665385744}
   - component: {fileID: 114950205154584906}
+  - component: {fileID: 54406426989422332}
   m_Layer: 0
   m_Name: Dummy_enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966741474272208}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54406426989422332
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966741474272208}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!65 &65588334961534240
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -105,3 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dab137f9fb1cf4681968fa503f5bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 6
+  directionChangeInterval: 5
+  maxheadingChange: 30
