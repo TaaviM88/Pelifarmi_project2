@@ -6,6 +6,7 @@ public class Enemy_BasicController : MonoBehaviour {
     public float speed = 5f;
     public float directionChangeInterval = 1f;
     public float maxheadingChange = 30f;
+    bool _dying;
     float heading;
     Vector3 targetRotation;
     Rigidbody _rb;
@@ -18,6 +19,7 @@ public class Enemy_BasicController : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, heading, 0);
         _rb = GetComponent<Rigidbody>();
         StartCoroutine(Newheading());
+        _dying = false;
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,10 @@ public class Enemy_BasicController : MonoBehaviour {
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         var forward = transform.TransformDirection(Vector3.forward);
         transform.Translate(forward*speed*Time.deltaTime);
-
+        if(_dying == true)
+        {
+        transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+        }
         //controller.SimpleMove(forward * speed);
         //Debug.Log(targetRotation);
 	}
@@ -59,17 +64,29 @@ public class Enemy_BasicController : MonoBehaviour {
         {
             Debug.Log("Perkele kun oon kännissä");
             //NewHeadingRoutine();
-            targetRotation += new Vector3(0, 60, 0);
+            targetRotation -= new Vector3(0, 60, 0);
         }
         if(col.gameObject.CompareTag ("Player"))
         {
             ReleaseFreeze();
+            Dying();
         }
     }
 
     void ReleaseFreeze()
     {
         _rb.constraints = RigidbodyConstraints.None;
+    }
+
+    void Dying()
+    {
+        _dying = true;
+        Invoke("Death",10f);
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
     /*void OnCollisionStay(Collision ColInfo)
     {
