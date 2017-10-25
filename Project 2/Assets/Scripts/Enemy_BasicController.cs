@@ -8,6 +8,7 @@ public class Enemy_BasicController : MonoBehaviour {
     public float maxheadingChange = 30f;
     float heading;
     Vector3 targetRotation;
+    Rigidbody _rb;
     //CharacterController controller;
 	// Use this for initialization
 	void Awake () {
@@ -15,6 +16,7 @@ public class Enemy_BasicController : MonoBehaviour {
         //controller = GetComponent<CharacterController>();
         heading = Random.Range(0, 360);
         transform.eulerAngles = new Vector3(0, heading, 0);
+        _rb = GetComponent<Rigidbody>();
         StartCoroutine(Newheading());
 	}
 	
@@ -23,6 +25,7 @@ public class Enemy_BasicController : MonoBehaviour {
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         var forward = transform.TransformDirection(Vector3.forward);
         transform.Translate(forward*speed*Time.deltaTime);
+
         //controller.SimpleMove(forward * speed);
         //Debug.Log(targetRotation);
 	}
@@ -58,6 +61,15 @@ public class Enemy_BasicController : MonoBehaviour {
             //NewHeadingRoutine();
             targetRotation += new Vector3(0, 60, 0);
         }
+        if(col.gameObject.CompareTag ("Player"))
+        {
+            ReleaseFreeze();
+        }
+    }
+
+    void ReleaseFreeze()
+    {
+        _rb.constraints = RigidbodyConstraints.None;
     }
     /*void OnCollisionStay(Collision ColInfo)
     {

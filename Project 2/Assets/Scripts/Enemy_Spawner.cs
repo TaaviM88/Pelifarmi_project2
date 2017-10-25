@@ -23,7 +23,8 @@ public class Enemy_Spawner : MonoBehaviour {
             }
         }
         _spawnTime = GetRandomSpawnTime();
-        _playerIsClose = false;
+        _playerIsClose = true;
+
 	}
 	
 	// Update is called once per frame
