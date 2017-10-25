@@ -246,7 +246,19 @@ GameObject:
   m_PrefabParentObject: {fileID: 1280510473953424, guid: f78aad124e6c449aeb3999ebb6580148,
     type: 2}
   m_PrefabInternal: {fileID: 1542679017}
---- !u!82 &1259126888
+--- !u!114 &1259126888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259126883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8b3ed1788964598880328b6e4a02a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carSound: {fileID: 8300000, guid: ea2f6284fb2d5a44784c012c3c786f87, type: 3}
+--- !u!82 &1259126889
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -255,11 +267,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e9ed6baf7ee0e494980451a340b2bd21, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ea2f6284fb2d5a44784c012c3c786f87, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: -0.69
-  Loop: 0
+  m_Pitch: 1.94
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -528,6 +540,10 @@ Prefab:
       propertyPath: speedBoost
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1280510473953424, guid: f78aad124e6c449aeb3999ebb6580148, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f78aad124e6c449aeb3999ebb6580148, type: 2}
   m_IsPrefabParent: 0
@@ -627,7 +643,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 47a4a2169df274dde96786ac51baa7c4, type: 2}
+  - {fileID: 2100000, guid: 506110356175f40158f5bb6f87b80726, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
