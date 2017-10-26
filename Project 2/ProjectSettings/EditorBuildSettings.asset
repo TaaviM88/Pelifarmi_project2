@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenet/Menu.unity
+    guid: ba3eba5718b904971a28ab743b7724de
+  - enabled: 1
+    path: "Assets/Scenet/Tekijo\u0308itten omat Scenet/Sarre_Scene.unity"
+    guid: 465d4259c6ce8684eb20ee56bdbc41aa
+  - enabled: 1
+    path: Assets/Scenet/Credits.unity
+    guid: 00000000000000000000000000000000
