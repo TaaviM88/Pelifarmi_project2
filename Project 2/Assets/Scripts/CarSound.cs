@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CarSound : MonoBehaviour {
+public class CarSound : MonoBehaviour 
+{
 
+	AudioSource engine;
+	AudioSource impact;
+	AudioSource impact2;
 
-	private AudioSource source;
-	public AudioClip _carSound;
 
 
 	void Start()
 	{
-		source = GetComponent<AudioSource> ();
+		AudioSource[] audios = GetComponents<AudioSource>();
+		engine = audios[0];
+		impact = audios[1];
 	}
 
 	void Update() 
@@ -20,14 +24,23 @@ public class CarSound : MonoBehaviour {
 		
 		if(Input.GetKeyDown(KeyCode.W))
 		{   
-			source.Play();
+			engine.Play();
 			//AudioSource.Play(44100);
 		}
 		if(Input.GetKeyUp(KeyCode.W))
 		{
-			source.Stop();
+			engine.Stop();
 		}
 			
+	}
+
+	void OnCollisionEnter (Collision Collision)
+	{
+		if(GetComponent<Collider>().gameObject)
+		{
+			impact.Play();
+		}
 			
 	}
+
 }
