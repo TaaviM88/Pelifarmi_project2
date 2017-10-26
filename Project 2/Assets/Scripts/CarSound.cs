@@ -21,7 +21,8 @@ public class CarSound : MonoBehaviour
 
 	void Update() 
 	{
-		
+		//tehty useampi sama komento koska oon vitun tyhmä ja väsyttää
+		//Eteen
 		if(Input.GetKeyDown(KeyCode.W))
 		{   
 			engine.Play();
@@ -31,6 +32,18 @@ public class CarSound : MonoBehaviour
 		{
 			engine.Stop();
 		}
+		//taakse
+		if(Input.GetKeyDown(KeyCode.S))
+		{   
+			engine.Play();
+			//AudioSource.Play(44100);
+		}
+		if(Input.GetKeyUp(KeyCode.S))
+		{
+			engine.Stop();
+		}
+
+
 			
 	}
 
